@@ -80,6 +80,14 @@ test:
 #
 production:
   <<: *default
-  database: rentirooms_production
-  username: rentirooms
-  password: <%= ENV['RENTIROOMS_DATABASE_PASSWORD'] %>
+  url: <%= ENV['API_DATABASE_URL'] %>
+  database: <%= ENV['API_DATABASE'] %>
+  username: <%= ENV['API_DATABASE_USERNAME'] %>
+  password: <%= ENV['API_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  url: <%= ENV['API_DATABASE_URL'] %>
+  database: <%= ENV['API_DATABASE'] %>
+  username: <%= ENV['API_DATABASE_USERNAME'] %>
+  password: <%= ENV['API_DATABASE_PASSWORD'] %>
