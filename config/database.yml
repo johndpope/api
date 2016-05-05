@@ -80,14 +80,16 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['API_DATABASE_URL'] %>
-  database: <%= ENV['API_DATABASE'] %>
-  username: <%= ENV['API_DATABASE_USERNAME'] %>
-  password: <%= ENV['API_DATABASE_PASSWORD'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
 
 staging:
   <<: *default
-  url: <%= ENV['API_DATABASE_URL'] %>
-  database: <%= ENV['API_DATABASE'] %>
-  username: <%= ENV['API_DATABASE_USERNAME'] %>
-  password: <%= ENV['API_DATABASE_PASSWORD'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
