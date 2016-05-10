@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.beta4', '< 5.1'
+# Live on the edge
+gem 'rails', github: 'rails/rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -17,6 +16,11 @@ gem 'active_model_serializers', '~> 0.10.0.rc5'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+
+# Use Resque for background jobs
+gem 'resque', require: 'resque/server'
+# TODO shouldn't have to do this
+gem 'sinatra', github: 'sinatra/sinatra'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
