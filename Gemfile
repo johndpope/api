@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Live on the edge
-gem 'rails', github: 'rails/rails'
+gem 'rails', '>= 5.0.0.rc1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -19,7 +19,6 @@ gem 'rack-cors'
 
 # Use Resque for background jobs
 gem 'resque', require: 'resque/server'
-# TODO shouldn't have to do this
 gem 'sinatra', github: 'sinatra/sinatra'
 
 group :development, :test do
