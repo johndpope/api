@@ -8,7 +8,7 @@
 # For now this will do
 js_origins = {
   'development' => 'localhost:4200',
-  'production' => 'rentirooms.com',
+  'production' => 'production.rentirooms.com',
   'staging' => 'staging.rentirooms.com',
   'test' => 'localhost:4200'
 }
