@@ -21,6 +21,9 @@ gem 'rack-cors'
 gem 'resque', require: 'resque/server'
 gem 'sinatra', github: 'sinatra/sinatra'
 
+# Use official client to send requests via HTTP, not SMTP
+gem 'mailgun-ruby', '~> 1.1', require: 'mailgun'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
