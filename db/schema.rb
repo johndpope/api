@@ -11,24 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511021633) do
+ActiveRecord::Schema.define(version: 20160513160421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "line_1"
+    t.string   "line1"
     t.string   "apt"
     t.string   "city"
     t.string   "state"
     t.string   "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "room_id"
+    t.index ["room_id"], name: "index_addresses_on_room_id", using: :btree
   end
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "address_id"
     t.integer  "rent_type"
     t.string   "rent_amount"
     t.boolean  "furnished"
@@ -36,17 +37,31 @@ ActiveRecord::Schema.define(version: 20160511021633) do
     t.text     "visitor_policy"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["address_id"], name: "index_rooms_on_address_id", using: :btree
+    t.boolean  "bed"
+    t.boolean  "closet"
+    t.boolean  "bathroom"
+    t.boolean  "rug"
+    t.boolean  "tv"
+    t.boolean  "night_desk"
+    t.boolean  "wifi"
+    t.boolean  "radio"
+    t.boolean  "drawer"
+    t.boolean  "cable"
+    t.boolean  "electricity"
+    t.boolean  "mirror"
     t.index ["user_id"], name: "index_rooms_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "phone_number"
+    t.string   "email"
+    t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
-  add_foreign_key "rooms", "addresses"
+  add_foreign_key "addresses", "rooms"
   add_foreign_key "rooms", "users"
 end
