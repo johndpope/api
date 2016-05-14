@@ -1,0 +1,9 @@
+<% [@user, @room, @address].each do |thing| %>
+  <h3><%= thing.class %> Information</h3>
+  <p>
+    <% thing.attributes.each do |key, value| %>
+      <strong><%= key.humanize %>:</strong>
+      <%= value %><br>
+    <% end %>
+  </p>
+<% end %>

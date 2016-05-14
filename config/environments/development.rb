@@ -31,8 +31,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-
-  config.action_mailer.add_delivery_method :mailgun, Mail::MailgunDelivery
   config.action_mailer.delivery_method = :mailgun
 
   # Print deprecation notices to the Rails logger.
