@@ -4,6 +4,6 @@ class RoomMailer < ApplicationMailer
     @user = @room.user
     @address = @room.address
     _subject = "New Room Notification: #{@user.full_name}"
-    mail(to: ['julich.mera@gmail.com', 'mera7617@gmail.com'], subject: _subject)
+    mail(to: ['info@rentirooms.com'], subject: _subject)
   end
 end
