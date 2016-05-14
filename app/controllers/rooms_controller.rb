@@ -42,14 +42,53 @@ class RoomsController < ApplicationController
 
   private
     def room_params
-      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params).slice(
+        :other,
+        :pets_allowed,
+        :resides,
+        :shared_bathroom,
+        :shared_kitchen,
+        :shared_living_room,
+        :visitors_allowed,
+        :visitor_policy,
+        :rent_amount,
+        :rent_type,
+        :bathroom,
+        :bed,
+        :cable,
+        :closet,
+        :drawer,
+        :electricity,
+        :furnished,
+        :mirror,
+        :night_desk,
+        :radio,
+        :rug,
+        :tv,
+        :wifi
+      )
     end
 
     def user_params
-      ActiveModelSerializers::Deserialization.jsonapi_parse(params[:data][:user])
+      ActiveModelSerializers::Deserialization.jsonapi_parse(data[:user]).slice(
+        :first_name,
+        :last_name,
+        :email,
+        :phone_number
+      )
     end
 
     def address_params
-      ActiveModelSerializers::Deserialization.jsonapi_parse(params[:data][:address])
+      ActiveModelSerializers::Deserialization.jsonapi_parse(data[:address]).slice(
+        :line1,
+        :apt,
+        :city,
+        :state,
+        :zip_code
+      )
+    end
+
+    def data
+      @_data ||= params.require(:data)
     end
 end
