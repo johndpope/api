@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513160421) do
+ActiveRecord::Schema.define(version: 20160514034455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,11 @@ ActiveRecord::Schema.define(version: 20160513160421) do
     t.string   "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "room_id"
-    t.index ["room_id"], name: "index_addresses_on_room_id", using: :btree
   end
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "address_id"
     t.integer  "rent_type"
     t.string   "rent_amount"
     t.boolean  "furnished"
@@ -49,6 +48,8 @@ ActiveRecord::Schema.define(version: 20160513160421) do
     t.boolean  "cable"
     t.boolean  "electricity"
     t.boolean  "mirror"
+    t.text     "other"
+    t.index ["address_id"], name: "index_rooms_on_address_id", using: :btree
     t.index ["user_id"], name: "index_rooms_on_user_id", using: :btree
   end
 
@@ -62,6 +63,6 @@ ActiveRecord::Schema.define(version: 20160513160421) do
     t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
-  add_foreign_key "addresses", "rooms"
+  add_foreign_key "rooms", "addresses"
   add_foreign_key "rooms", "users"
 end

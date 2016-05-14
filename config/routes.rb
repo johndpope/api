@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'index#index'
 
+  resources :rooms
   resources :users
   mount Resque::Server => '/resque'
 
