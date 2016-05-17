@@ -43,7 +43,8 @@ class RoomsController < ApplicationController
   private
     def room_params
       ActiveModelSerializers::Deserialization.jsonapi_parse(params).slice(
-        :other,
+        :comment,
+        :other_amenities,
         :pets_allowed,
         :resides,
         :shared_bathroom,
